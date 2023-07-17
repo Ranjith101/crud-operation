@@ -1,0 +1,39 @@
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+   
+  }
+  
+  .login-form-container .form {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+  }
+  
+  .input-field {
+    margin-bottom: 10px;
+  }
+  
+  .login-button {
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+    margin-bottom: 10px;
+  }

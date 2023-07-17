@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import CreateForm from './Components/CreateForm';
-import ReadData from './Components/ReadData';
+import CreateForm from './components/CreateForm';
+import ReadData from './components/ReadData';
+import LoginForm from './components/Login';
+import { Button } from '@mui/material';
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [isLoggedIn, setLoggedIn] = useState(false);
   React.useEffect(() => {
     const storedUsers = JSON.parse(localStorage.getItem('users'));
     const initialUsers = [
@@ -22,6 +25,14 @@ function App() {
   }, []);
   const handleUserCreated = (newUser) => {
     setUsers([...users, newUser]);
+  };
+
+  const handleLogin = () => {
+    setLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setLoggedIn(false);
   };
 
   const handleUserDeleted = (id) => {
@@ -46,8 +57,14 @@ function App() {
   return (
     <div>
       <h1>CRUD Application</h1>
-      <CreateForm onUserCreated={handleUserCreated} />
-      <ReadData users={users} onUserDeleted={handleUserDeleted} onUserUpdated={handleUserUpdated} />
+      {isLoggedIn?(
+        <>
+        <Button onClick={handleLogout}>Logout</Button>
+        <CreateForm onUserCreated={handleUserCreated} />
+        <ReadData users={users} onUserDeleted={handleUserDeleted} onUserUpdated={handleUserUpdated} />
+        </>
+      ):(<LoginForm onLogin={handleLogin} />)}
+
     </div>
   );
 }

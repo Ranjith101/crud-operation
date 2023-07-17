@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, TextField, Grid } from '@mui/material';
+import '../styles/createform.css';
 
 function CreateForm({ onUserCreated }) {
   const [name, setName] = useState('');
@@ -27,19 +28,49 @@ function CreateForm({ onUserCreated }) {
   };
 
   return (
+    // <Grid container spacing={2} justifyContent="center">
+    //   <Grid item xs={4}>
+    //     <TextField label="Name" fullWidth value={name} onChange={(e) => setName(e.target.value)} />
+    //   </Grid>
+    //   <Grid item xs={4}>
+    //     <TextField label="Email" fullWidth value={email} onChange={(e) => setEmail(e.target.value)} />
+    //   </Grid>
+    //   <Grid item xs={4}>
+    //     <Button variant="contained" color="primary" onClick={handleCreate}>
+    //       Create
+    //     </Button>
+    //   </Grid>
+    // </Grid>
     <Grid container spacing={2} justifyContent="center">
-      <Grid item xs={12}>
-        <TextField label="Name" fullWidth value={name} onChange={(e) => setName(e.target.value)} />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField label="Email" fullWidth value={email} onChange={(e) => setEmail(e.target.value)} />
-      </Grid>
-      <Grid item xs={12}>
-        <Button variant="contained" color="primary" onClick={handleCreate}>
-          Create
-        </Button>
-      </Grid>
+    <Grid item xs={4}>
+      <TextField
+        className="input-field"
+        label="Name"
+        fullWidth
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
     </Grid>
+    <Grid item xs={4}>
+      <TextField
+        className="input-field"
+        label="Email"
+        fullWidth
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+    </Grid>
+    <Grid item xs={4}>
+      <Button
+        className="create-button"
+        variant="contained"
+        color="primary"
+        onClick={handleCreate}
+      >
+        Create
+      </Button>
+    </Grid>
+  </Grid>
   );
 }
 
